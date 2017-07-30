@@ -20,6 +20,7 @@ defmodule Discuss.Router do
     #whenever somone sends my site a GET request with topics/new
     #Enact the topic controller's "new" function
     get "/topics/new", TopicController, :new
+    post "/topics", TopicController, :create
   end
 
   # Other scopes may use custom stacks.
