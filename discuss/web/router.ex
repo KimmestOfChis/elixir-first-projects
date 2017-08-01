@@ -26,6 +26,12 @@ defmodule Discuss.Router do
     resources "/", TopicController #only works if following restful conventions
   end
 
+  scope "/auth", Discuss do
+    pipe_through :browser
+
+    get "/:provider", AuthController, :request #:provider instead of github, so that we can add other oauth
+    get "/:provider/callback", AuthController, :callback 
+  end
   # Other scopes may use custom stacks.
   # scope "/api", Discuss do
   #   pipe_through :api
